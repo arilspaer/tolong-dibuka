@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hallo Alice</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="message">HALLO ALICE!</div>
+    <button class="button" onclick="showBubbles()">Click sini</button>
+
+    <script>
+        function showBubbles() {
+            const images = [
+                "chillguy.jpg",  // Ganti dengan URL gambar pertama
+                "semangat.jpg",  // Ganti dengan URL gambar kedua
+                "semangatlagi.jpg"   // Ganti dengan URL gambar ketiga
+            ];
+            const numBubbles = 10; // Jumlah bubble yang muncul
+
+            for (let i = 0; i < numBubbles; i++) {
+                setTimeout(() => {
+                    const bubble = document.createElement("img");
+                    bubble.classList.add("bubble");
+                    bubble.src = images[i % images.length]; // Menggunakan gambar secara berulang
+
+                    // Posisi acak untuk bubble
+                    const randomX = Math.random() * window.innerWidth;
+                    const randomY = Math.random() * window.innerHeight;
+                    bubble.style.left = `${randomX}px`;
+                    bubble.style.top = `${randomY}px`;
+
+                    document.body.appendChild(bubble);
+
+                    // Hapus bubble setelah animasi selesai
+                    setTimeout(() => {
+                        bubble.remove();
+                    }, 5000);
+                }, i * 300); // Jeda 300ms antara setiap bubble muncul
+            }
+        }
+    </script>
+</body>
+</html>
